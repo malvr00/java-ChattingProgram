@@ -28,7 +28,7 @@ class chatServer extends JFrame{
 	
 	private ServerSocket serverSocket = null;
 	public Socket clientSocket = null;
-	Vector <ServerReceiveThread> vClient;
+	Vector <ServerReceiveThread> vClient = new Vector<>();
 	boolean listening;
 	
 	public chatServer() {}
