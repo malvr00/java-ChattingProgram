@@ -246,7 +246,7 @@ class ServerReceiveThread extends Thread{
 			
 			if(strMsg.equals("Chatting")) {
 				socketOut.println("<단축키> /h(도움말), /u(접속자목록), /r 이름 (변경할 이름)");
-				socketOut.println("먼저 이름을 정해주세요!");
+				
 				strUserName = socketIn.readLine();
 				chatting.broadcast("[" + strUserName + "] 님이 접속하셨습니다.");
 				
@@ -260,10 +260,10 @@ class ServerReceiveThread extends Thread{
 					}
 					else if(strMsg.regionMatches(0, "/r", 0, 2)) {
 						String new_name = strMsg.substring(2).trim();
-						chatting.broadcast("접속자" + strUserName + "님의 이름이" + new_name + "으로 변경되었습니다.");
+						chatting.broadcast("접속자 [" + strUserName + "] 님의 이름이 [" + new_name + "] 으로 변경되었습니다.");
 						strUserName = new_name;
 					}else {
-						chatting.broadcast("[" + strUserName + "] : " + strMsg + "\n" );
+						chatting.broadcast("[" + strUserName + "] : " + strMsg);
 					}
 				} // while End
 			}else
