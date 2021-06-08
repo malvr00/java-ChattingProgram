@@ -236,7 +236,7 @@ class ServerReceiveThread extends Thread{
 	}
 	public void run() {
 		try {
-			chatting.showText.append("Client : " + clientSocket.toString() + "+에서 접속하였습니다.");
+			chatting.showText.append("Client : " + clientSocket.toString() + "+에서 접속하였습니다.\n");
 			socketOut = new PrintWriter(clientSocket.getOutputStream(),true);
 			socketIn = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 		
