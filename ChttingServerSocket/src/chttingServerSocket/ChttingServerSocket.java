@@ -48,6 +48,7 @@ class chatServer extends JFrame{
 		MessageBox = new JTextField(40);
 		
 		pan1.setLayout(new BorderLayout());
+		showText.setLineWrap(true);	// 자동줄바꿈
 		JScrollPane scrollPane1 = new JScrollPane(showText);
 		scrollPane1.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		pan1.add("North",scrollPane1);
@@ -244,7 +245,7 @@ class ServerReceiveThread extends Thread{
 			strMsg = socketIn.readLine();		// 접속한 Client가 맞는지 확인 Message 받음
 			
 			if(strMsg.equals("Chatting")) {
-				socketOut.println("<단축키> /h(도움말), /u(접속자목록), /r 이름 (변경할 이름)");
+				socketOut.println("<단축키> /h(도움말), /u(접속자목록), /r 이름 (변경할 이름)\n");
 				socketOut.println("먼저 이름을 정해주세요!");
 				strUserName = socketIn.readLine();
 				chatting.broadcast("[" + strUserName + "] 님이 접속하셨습니다.");
@@ -252,7 +253,7 @@ class ServerReceiveThread extends Thread{
 				while((strMsg = socketIn.readLine()) != null) {
 				// 단축키 처리
 					if(strMsg.equals("/h")) {
-						socketOut.println("<단축키> /h(도움말), /u(접속자목록), /r 이름 (변경할 이름)");
+						socketOut.println("<단축키> /h(도움말), /u(접속자목록), /r 이름 (변경할 이름)\n");
 					}
 					else if(strMsg.equals("/u")) {
 						SendUser();
