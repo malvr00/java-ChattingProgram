@@ -10,14 +10,14 @@ Java Socket
 * Message Receive [부분](https://github.com/malvr00/java-ChattingProgram/blob/main/ChttingServerSocket/src/chttingServerSocket/ChttingServerSocket.java#L238)
 * Chatting 사용자 단축키 [옵션](https://github.com/malvr00/java-ChattingProgram/blob/main/ChttingServerSocket/src/chttingServerSocket/ChttingServerSocket.java#L248)
 
-   <img src="https://user-images.githubusercontent.com/77275513/121181769-536cec00-c89d-11eb-9b89-230fc1aace0b.png" width="450px" height="300px" title="100px" alt="RubberDuck"></img><br/>
+  <img src="https://user-images.githubusercontent.com/77275513/121181769-536cec00-c89d-11eb-9b89-230fc1aace0b.png" width="450px" height="300px" title="100px" alt="RubberDuck"></img><br/>
 
 
 ## Chatting Program Client [[코드참조]](https://github.com/malvr00/java-ChattingProgram/blob/main/ChttingClientSocket/src/chttingClientSocket/ChttingClientSocket.java)
 * Message Receive Thread로 생성 [참조](https://github.com/malvr00/java-ChattingProgram/blob/main/ChttingClientSocket/src/chttingClientSocket/ChttingClientSocket.java#L176)
 * 사용자 이름변경 [참조](https://github.com/malvr00/java-ChattingProgram/blob/main/ChttingClientSocket/src/chttingClientSocket/ChttingClientSocket.java#L161)
 
-   <img src="https://user-images.githubusercontent.com/77275513/121182448-0e958500-c89e-11eb-9717-6a051236fcf1.png" width="450px" height="300px" title="100px" alt="RubberDuck"></img><br/>
+  <img src="https://user-images.githubusercontent.com/77275513/121182448-0e958500-c89e-11eb-9717-6a051236fcf1.png" width="450px" height="300px" title="100px" alt="RubberDuck"></img><br/>
 
 
 ## 다중 접속 (multiple access)
