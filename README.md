@@ -24,5 +24,6 @@ Java Socket
 
    <img src="https://user-images.githubusercontent.com/77275513/121182598-397fd900-c89e-11eb-82de-cbf9f2e78c27.PNG" width="450px" height="300px" title="100px" alt="RubberDuck"></img><br/>
 
-
-### 현재 User 강제퇴장, 접속자목록 미구현상태 조만간 추가할 예정.
+=====구현 목록=====
+✔User 강제퇴장
+✔접속자목록
