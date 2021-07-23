@@ -43,18 +43,18 @@ class chatServer extends JFrame{
 		pan23 = new JPanel();
 		
 		
-	// Panel 1 Á¦ÀÛ
+	// Panel 1 ì œì‘
 		showText = new JTextArea(20, 40);
 		MessageBox = new JTextField(40);
 		
 		pan1.setLayout(new BorderLayout());
-		showText.setLineWrap(true);	// ÀÚµ¿ÁÙ¹Ù²Ş
+		showText.setLineWrap(true);	// ìë™ì¤„ë°”ê¿ˆ
 		JScrollPane scrollPane1 = new JScrollPane(showText);
 		scrollPane1.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		pan1.add("North",scrollPane1);
 		pan1.add("Center", MessageBox);
 		
-		// Panel 21 Server Á¢¼ÓÃ¢
+		// Panel 21 Server ì ‘ì†ì°½
 		InetAddress inet = null;
 		try {
 			inet = InetAddress.getLocalHost();
@@ -67,14 +67,14 @@ class chatServer extends JFrame{
 		StartBt = new JButton("Server Start");
 		StopBt = new JButton("Server Stop");
 		
-		// Panel 22 User Á¢¼ÓÇöÈ² Ã¢
+		// Panel 22 User ì ‘ì†í˜„í™© ì°½
 		showUser = new JTextArea(10, 20);
 		
-		// Panel 23 °­Åğ ¹× ¸Ş¼¼Áö º¸³»±â
+		// Panel 23 ê°•í‡´ ë° ë©”ì„¸ì§€ ë³´ë‚´ê¸°
 		SendBt = new JButton("Send");
-		ExpulsionBt = new JButton("°­Åğ");
+		ExpulsionBt = new JButton("ê°•í‡´");
 		
-		// Panel 2 Á¦ÀÛ	
+		// Panel 2 ì œì‘	
 		pan2.setLayout(new BorderLayout());
 		pan21.setLayout(new GridLayout(4,2));
 		pan22.setLayout(new BorderLayout());
@@ -89,7 +89,7 @@ class chatServer extends JFrame{
 		pan21.add(StartBt);
 		pan21.add(StopBt);
 		
-		pan22.add("North",new Label("Á¢¼ÓÀÚ"));
+		pan22.add("North",new Label("ì ‘ì†ì"));
 		pan22.add("Center", showUser);
 		
 		pan23.add("North", ExpulsionBt);
@@ -99,7 +99,7 @@ class chatServer extends JFrame{
 		pan2.add("Center", pan22);
 		pan2.add("South", pan23);
 		
-	// ComponentÀÇ »ç¿ë°¡´É ¿©ºÎ ÁöÁ¤.
+	// Componentì˜ ì‚¬ìš©ê°€ëŠ¥ ì—¬ë¶€ ì§€ì •.
 		showText.setEditable(false);
 		showUser.setEditable(false);
 		StartBt.setEnabled(true);
@@ -110,21 +110,21 @@ class chatServer extends JFrame{
 		add("East",pan2);
 		add("Center",pan1);
 		
-		// Event Listener Ãß°¡
+		// Event Listener ì¶”ê°€
 		StartBt.addActionListener(new ChatActionListenerHandle());
 		StopBt.addActionListener(new ChatActionListenerHandle());
 		SendBt.addActionListener(new ChatSendActionListenerHandle());
 		MessageBox.addActionListener(new ChatSendActionListenerHandle());
 	} // initForm End
 	
-// ¸ğµç Á¢¼ÓÀÚ¿¡°Ô Àü¼Û
+// ëª¨ë“  ì ‘ì†ìì—ê²Œ ì „ì†¡
 	public void broadcast(String msg) {
 		for(int i=0; i<vClient.size(); i++) {
 			ServerReceiveThread trd = ((ServerReceiveThread)vClient.elementAt(i));
 			trd.socketOut.println(msg);
 		}
-		showText.append(msg + "\n");	// server È­¸é¿¡ Ãâ·Â										
-		showText.setCaretPosition(showText.getDocument().getLength()); // ½ºÅ©·Ñ¹Ù Á¦ÀÏ ¾Æ·¡·Î ³»¸®±â
+		showText.append(msg + "\n");	// server í™”ë©´ì— ì¶œë ¥										
+		showText.setCaretPosition(showText.getDocument().getLength()); // ìŠ¤í¬ë¡¤ë°” ì œì¼ ì•„ë˜ë¡œ ë‚´ë¦¬ê¸°
 	} // broadcast End
 	
 // MessageBox, SendBt Event Handle
@@ -139,7 +139,7 @@ class chatServer extends JFrame{
 					MessageBox.requestFocus();					
 				}
 			}catch(Exception e) {
-				showText.append("Message Àü¼Û¿À·ù");
+				showText.append("Message ì „ì†¡ì˜¤ë¥˜");
 			}
 		}
 	} // ChatSendActionListenerHandle End
@@ -152,10 +152,10 @@ class chatServer extends JFrame{
 				ServerAcceptThread accept = new ServerAcceptThread();
 				accept.start();
 			}else {
-				//broadcast("Server¸¦ Á¾·áÇÕ´Ï´Ù.");
-				showText.append("Server¸¦ Á¾·áÇÕ´Ï´Ù. \n");
+				//broadcast("Serverë¥¼ ì¢…ë£Œí•©ë‹ˆë‹¤.");
+				showText.append("Serverë¥¼ ì¢…ë£Œí•©ë‹ˆë‹¤. \n");
 				listening = false;
-			// ComponentÀÇ »ç¿ë°¡´É ¿©ºÎ ÁöÁ¤.
+			// Componentì˜ ì‚¬ìš©ê°€ëŠ¥ ì—¬ë¶€ ì§€ì •.
 				StartBt.setEnabled(true);
 				StopBt.setEnabled(false);
 				SendBt.setEnabled(false);
@@ -169,7 +169,7 @@ class chatServer extends JFrame{
 		}
 	} // ChatActionListenerHandle End
 	
-// Accept Class »ı¼º
+// Accept Class ìƒì„±
 	class ServerAcceptThread extends Thread{
 		private ServerReceiveThread trd;
 		public ServerAcceptThread() {}
@@ -180,55 +180,55 @@ class chatServer extends JFrame{
 			try {
 				serverSocket = new ServerSocket(port);
 			}catch(IOException e) {
-				showText.append("Server »ı¼º ¿À·ù");
+				showText.append("Server ìƒì„± ì˜¤ë¥˜");
 				System.err.println(e);
 				return;
 			}
-		// ComponentÀÇ »ç¿ë°¡´É ¿©ºÎ ÁöÁ¤.
+		// Componentì˜ ì‚¬ìš©ê°€ëŠ¥ ì—¬ë¶€ ì§€ì •.
 			StartBt.setEnabled(false);
 			StopBt.setEnabled(true);
 			SendBt.setEnabled(true);
 			ExpulsionBt.setEnabled(true);
-		// Focus¸¦ SendBtÀ¸·Î
+		// Focusë¥¼ SendBtìœ¼ë¡œ
 			MessageBox.requestFocus();
-			showText.append(port + "¿¡¼­ Á¢¼ÓÀÚ¸¦ ±â´Ù¸³´Ï´Ù. \n");
+			showText.append(port + "ì—ì„œ ì ‘ì†ìë¥¼ ê¸°ë‹¤ë¦½ë‹ˆë‹¤. \n");
 			try {
 				while(listening) {
 					clientSocket = serverSocket.accept();
-				// Outer reference¸¦ º¸³¿
+				// Outer referenceë¥¼ ë³´ëƒ„
 					trd = new ServerReceiveThread(chatServer.this);
 					trd.start();
-				// Á¢¼ÓÀÚÁ¤º¸ ÀúÀå
+				// ì ‘ì†ìì •ë³´ ì €ì¥
 					vClient.addElement(trd);
 				}
 				serverSocket.close();
-				showText.append("Server¸¦ Á¾·áÇÕ´Ï´Ù.");
+				showText.append("Serverë¥¼ ì¢…ë£Œí•©ë‹ˆë‹¤.");
 			}catch(IOException e) {}
 		} // Thread run End
 	} // ServerAcceptThread End
 } // chatServer End
 
-// ================================= º°µµÀÇ class·Î ¸¸µé¾î Ã³¸® ===================================
+// ================================= ë³„ë„ì˜ classë¡œ ë§Œë“¤ì–´ ì²˜ë¦¬ ===================================
 class ServerReceiveThread extends Thread{
 	private Socket clientSocket = null;
-	private BufferedReader socketIn;		// º¸³½ Message ÀÔ·Â
-	public PrintWriter socketOut;			// Message Ãâ·Â
-	private String strUserName = "NoName";  // User Name ÀúÀå
-	private String strMsg; 					// Buffer¿¡ ÀÖ´Â Message ´ã´Â °÷
+	private BufferedReader socketIn;		// ë³´ë‚¸ Message ì…ë ¥
+	public PrintWriter socketOut;			// Message ì¶œë ¥
+	private String strUserName = "NoName";  // User Name ì €ì¥
+	private String strMsg; 					// Bufferì— ìˆëŠ” Message ë‹´ëŠ” ê³³
 	
-	chatServer chatting;
+	private chatServer chatting;
 	public ServerReceiveThread(chatServer c) {
 		chatting = c;
 		this.clientSocket = c.clientSocket;
 	}
 	public void removeClient() {
-		chatting.broadcast("[" + strUserName + "] ´ÔÀÌ ÅğÀåÇÏ¼Ì½À´Ï´Ù.");
+		chatting.broadcast("[" + strUserName + "] ë‹˜ì´ í‡´ì¥í•˜ì…¨ìŠµë‹ˆë‹¤.");
 		chatting.vClient.removeElement(this);
 	}
-// Á¢¼ÓÀÚ ¸ñ·Ï Àü¼Û ("/u" Ã³¸® ÇÔ¼ö)
+// ì ‘ì†ì ëª©ë¡ ì „ì†¡ ("/u" ì²˜ë¦¬ í•¨ìˆ˜)
 	public void SendUser() {
 		int cnt = chatting.vClient.size() + 1;
-		socketOut.println("< ==== ÇöÀç Á¢¼ÓÀÚ + " + cnt + "¸í  ¸í´Ü ==== >");
+		socketOut.println("< ==== í˜„ì¬ ì ‘ì†ì + " + cnt + "ëª…  ëª…ë‹¨ ==== >");
 		
 		for(int i = 0; i<chatting.vClient.size(); i++) {
 			ServerReceiveThread trd = ((ServerReceiveThread)chatting.vClient.elementAt(i));
@@ -237,44 +237,44 @@ class ServerReceiveThread extends Thread{
 	}
 	public void run() {
 		try {
-			chatting.showText.append("Client : " + clientSocket.toString() + "+¿¡¼­ Á¢¼ÓÇÏ¿´½À´Ï´Ù.\n");
+			chatting.showText.append("Client : " + clientSocket.toString() + "+ì—ì„œ ì ‘ì†í•˜ì˜€ìŠµë‹ˆë‹¤.\n");
 			socketOut = new PrintWriter(clientSocket.getOutputStream(),true);
 			socketIn = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 		
-			socketOut.println("ChatServer"); 	// Server È®ÀÎ Message º¸³¿
-			strMsg = socketIn.readLine();		// Á¢¼ÓÇÑ Client°¡ ¸Â´ÂÁö È®ÀÎ Message ¹ŞÀ½
+			socketOut.println("ChatServer"); 	// Server í™•ì¸ Message ë³´ëƒ„
+			strMsg = socketIn.readLine();		// ì ‘ì†í•œ Clientê°€ ë§ëŠ”ì§€ í™•ì¸ Message ë°›ìŒ
 			
 			if(strMsg.equals("Chatting")) {
-				socketOut.println("<´ÜÃàÅ°> /h(µµ¿ò¸»), /u(Á¢¼ÓÀÚ¸ñ·Ï), /r ÀÌ¸§ (º¯°æÇÒ ÀÌ¸§)");
+				socketOut.println("<ë‹¨ì¶•í‚¤> /h(ë„ì›€ë§), /u(ì ‘ì†ìëª©ë¡), /r ì´ë¦„ (ë³€ê²½í•  ì´ë¦„)");
 				
 				strUserName = socketIn.readLine();
-				chatting.broadcast("[" + strUserName + "] ´ÔÀÌ Á¢¼ÓÇÏ¼Ì½À´Ï´Ù.");
+				chatting.broadcast("[" + strUserName + "] ë‹˜ì´ ì ‘ì†í•˜ì…¨ìŠµë‹ˆë‹¤.");
 				
 				while((strMsg = socketIn.readLine()) != null) {
-				// ´ÜÃàÅ° Ã³¸®
+				// ë‹¨ì¶•í‚¤ ì²˜ë¦¬
 					if(strMsg.equals("/h")) {
-						socketOut.println("<´ÜÃàÅ°> /h(µµ¿ò¸»), /u(Á¢¼ÓÀÚ¸ñ·Ï), /r ÀÌ¸§ (º¯°æÇÒ ÀÌ¸§)");
+						socketOut.println("<ë‹¨ì¶•í‚¤> /h(ë„ì›€ë§), /u(ì ‘ì†ìëª©ë¡), /r ì´ë¦„ (ë³€ê²½í•  ì´ë¦„)");
 					}
 					else if(strMsg.equals("/u")) {
 						SendUser();
 					}
 					else if(strMsg.regionMatches(0, "/r", 0, 2)) {
 						String new_name = strMsg.substring(2).trim();
-						chatting.broadcast("Á¢¼ÓÀÚ [" + strUserName + "] ´ÔÀÇ ÀÌ¸§ÀÌ [" + new_name + "] À¸·Î º¯°æµÇ¾ú½À´Ï´Ù.");
+						chatting.broadcast("ì ‘ì†ì [" + strUserName + "] ë‹˜ì˜ ì´ë¦„ì´ [" + new_name + "] ìœ¼ë¡œ ë³€ê²½ë˜ì—ˆìŠµë‹ˆë‹¤.");
 						strUserName = new_name;
 					}else {
 						chatting.broadcast("[" + strUserName + "] : " + strMsg);
 					}
 				} // while End
 			}else
-				socketOut.println("Àß¸øµÈ Å¬¶óÀÌ¾ğÆ® ÀÔ´Ï´Ù.");
+				socketOut.println("ì˜ëª»ëœ í´ë¼ì´ì–¸íŠ¸ ì…ë‹ˆë‹¤.");
 			socketOut.close();
 			socketIn.close();
 			clientSocket.close();
 			removeClient();
 		}catch(IOException e) {
 			removeClient();
-			chatting.showText.append(" " + strUserName + " ÀÇ Á¢¼ÓÀÌ ²÷°å½À´Ï´Ù.");
+			chatting.showText.append(" " + strUserName + " ì˜ ì ‘ì†ì´ ëŠê²¼ìŠµë‹ˆë‹¤.");
 		}
 	} // ServerReceiveThread run Method End
 } // ServerReceiveThread Class End
